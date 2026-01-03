@@ -55,7 +55,6 @@
 </head>
 <body class="bg-pattern">
 
-    <!-- Navigation -->
     <header class="border-b border-white/10 sticky top-0 bg-black/90 backdrop-blur-md z-50">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
         <a href="index.html" class="text-xl font-serif font-bold gold-gradient tracking-widest hover:opacity-80 transition-opacity">役満コレクション</a>
@@ -73,7 +72,6 @@
 
     <main class="container mx-auto px-4 py-12">
         
-        <!-- Role Header -->
         <section class="mb-12">
             <div class="flex flex-col md:flex-row items-center md:items-end gap-6 mb-8">
                 <h2 class="text-5xl md:text-7xl font-serif text-white tracking-tighter">数え役満</h2>
@@ -81,7 +79,6 @@
                     <span class="px-3 py-1 bg-zinc-800 border border-zinc-600 text-zinc-400 text-xs font-bold rounded uppercase tracking-widest">13+ Fan</span>
                 </div>
             </div>
-            <!-- Mode Filters (JS制御) -->
             <div class="flex space-x-8 border-b border-white/10 mb-10 text-sm font-medium">
                 <button onclick="filterMode('all', this)" class="filter-btn pb-4 tab-active text-gray-500 hover:text-white transition-all">すべての和了</button>
                 <button onclick="filterMode('4p', this)" class="filter-btn pb-4 text-gray-500 hover:text-white transition-all">四人麻雀</button>
@@ -89,7 +86,6 @@
             </div>
         </section>
 
-        <!-- Fan Navigation (Sticky) -->
         <div class="sticky top-[73px] bg-black/80 backdrop-blur-sm z-40 -mx-4 px-4 py-4 border-b border-white/5 fan-nav overflow-x-auto">
             <div class="flex space-x-4 min-w-max justify-center">
                 <a href="#fan13" class="px-6 py-2 rounded-full border border-white/10 hover:border-yellow-500 text-sm transition-all">13飜</a>
@@ -103,7 +99,6 @@
             </div>
         </div>
 
-        <!-- 13 Fan Section -->
         <section id="fan13" class="pt-16 mb-20 section-container">
             <div class="flex items-center gap-4 mb-10">
                 <h3 class="text-2xl font-serif text-white tracking-widest">13飜</h3>
@@ -201,7 +196,7 @@
 
 
 
-        <!-- 14 Fan Section -->
+
         <section id="fan14" class="pt-16 mb-20 section-container">
             <div class="flex items-center gap-4 mb-10">
                 <h3 class="text-2xl font-serif text-white tracking-widest">14飜</h3>
@@ -268,7 +263,6 @@
 
 
         
-        <!-- 15 Fan Section -->
         <section id="fan15" class="pt-16 mb-20 section-container">
             <div class="flex items-center gap-4 mb-10">
                 <h3 class="text-2xl font-serif text-white tracking-widest">15飜</h3>
@@ -316,7 +310,7 @@
         </section>
 
 
-        <!-- 16 Fan Section -->
+        
         <section id="fan16" class="pt-16 mb-20 section-container">
             <div class="flex items-center gap-4 mb-10">
                 <h3 class="text-2xl font-serif text-white tracking-widest">16飜</h3>
@@ -346,7 +340,7 @@
 
 
 
-        <!-- 20+ Fan Section -->
+
         <section id="fan20" class="pt-16 mb-20 section-container">
             <div class="flex items-center gap-4 mb-10">
                 <h3 class="text-2xl font-serif text-white tracking-widest">20飜以上</h3>
@@ -385,11 +379,9 @@
 
     <script>
         function filterMode(mode, btnElement) {
-            // 1. ボタンのアクティブ状態切り替え
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('tab-active'));
             btnElement.classList.add('tab-active');
 
-            // 2. セクションごとにカードをフィルタリング
             const sections = document.querySelectorAll('.section-container');
             
             sections.forEach(section => {
@@ -410,7 +402,6 @@
                     }
                 });
 
-                // 表示するものが一つもない場合、メッセージを出す（任意）
                 if (visibleCount === 0) {
                     noData.classList.remove('hidden');
                 } else {
