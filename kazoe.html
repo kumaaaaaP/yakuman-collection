@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数え役満 - 役満コレクション</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+            scroll-behavior: smooth;
+        }
+        .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #f9f295 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .image-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .image-card:hover {
+            border-color: #d4af37;
+            transform: translateY(-4px);
+        }
+        .bg-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(212, 175, 55, 0.03) 1px, transparent 0);
+            background-size: 30px 30px;
+        }
+        .fan-nav {
+            scrollbar-width: none;
+        }
+        .fan-nav::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-pattern">
+
+    <!-- Navigation -->
+    <header class="border-b border-white/10 sticky top-0 bg-black/90 backdrop-blur-md z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-serif font-bold gold-gradient tracking-widest hover:opacity-80 transition-opacity">役満コレクション</a>
+            <nav class="flex space-x-6 items-center text-sm">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    図鑑に戻る
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        
+        <!-- Role Header -->
+        <section class="mb-12">
+            <div class="flex flex-col md:flex-row items-center md:items-end gap-6 mb-8">
+                <h2 class="text-5xl md:text-7xl font-serif text-white tracking-tighter">数え役満</h2>
+                <div class="pb-2">
+                    <span class="px-3 py-1 bg-zinc-800 border border-zinc-600 text-zinc-400 text-xs font-bold rounded uppercase tracking-widest">13+ Fan</span>
+                </div>
+            </div>
+            <div class="max-w-3xl">
+                <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                    役の組み合わせやドラの加算により、合計13飜以上に達した和了。
+                    特定の役満の形を作らずとも、圧倒的な打点によって役満として扱われる。
+                    雀魂では、和了演出の最後に「数え役満」の文字が刻まれ、その積み上げられた飜数は圧巻。
+                </p>
+            </div>
+        </section>
+
+        <!-- Fan Navigation (Sticky) -->
+        <div class="sticky top-[73px] bg-black/80 backdrop-blur-sm z-40 -mx-4 px-4 py-4 border-b border-white/5 fan-nav overflow-x-auto">
+            <div class="flex space-x-4 min-w-max justify-center">
+                <a href="#fan13" class="px-6 py-2 rounded-full border border-white/10 hover:border-yellow-500 text-sm transition-all">13飜</a>
+                <a href="#fan14" class="px-6 py-2 rounded-full border border-white/10 hover:border-yellow-500 text-sm transition-all">14飜</a>
+                <a href="#fan15" class="px-6 py-2 rounded-full border border-white/10 hover:border-yellow-500 text-sm transition-all">15飜以上</a>
+            </div>
+        </div>
+
+        <!-- 13 Fan Section -->
+        <section id="fan13" class="pt-16 mb-20">
+            <div class="flex items-center gap-4 mb-10">
+                <h3 class="text-2xl font-serif text-white tracking-widest">13飜</h3>
+                <div class="flex-grow h-[1px] bg-gradient-to-r from-white/20 to-transparent"></div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="image-card group cursor-pointer rounded-lg overflow-hidden">
+                    <div class="aspect-video bg-zinc-800 relative flex items-center justify-center">
+                        <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像]</span>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[11px] font-bold text-yellow-500/80">金の間 四人東</span>
+                            <span class="text-[10px] text-gray-500 font-mono">2024.01.20</span>
+                        </div>
+                        <p class="text-xs text-gray-400 italic">三倍満からのドラ爆</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="image-card group cursor-pointer rounded-lg overflow-hidden">
+                    <div class="aspect-video bg-zinc-800 relative flex items-center justify-center">
+                        <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像]</span>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[11px] font-bold text-yellow-500/80">玉の間 四人南</span>
+                            <span class="text-[10px] text-gray-500 font-mono">2023.11.15</span>
+                        </div>
+                        <p class="text-xs text-gray-400 italic">清一色・対々和・三暗刻</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 14 Fan Section -->
+        <section id="fan14" class="pt-16 mb-20">
+            <div class="flex items-center gap-4 mb-10">
+                <h3 class="text-2xl font-serif text-white tracking-widest">14飜</h3>
+                <div class="flex-grow h-[1px] bg-gradient-to-r from-white/20 to-transparent"></div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="image-card group cursor-pointer rounded-lg overflow-hidden border-yellow-500/10">
+                    <div class="aspect-video bg-zinc-800 relative flex items-center justify-center">
+                        <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像]</span>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[11px] font-bold text-yellow-500/80">玉の間 三人南</span>
+                            <span class="text-[10px] text-gray-500 font-mono">2023.12.05</span>
+                        </div>
+                        <p class="text-xs text-gray-400 italic">三麻特有の超高打点</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 15+ Fan Section -->
+        <section id="fan15" class="pt-16 mb-20">
+            <div class="flex items-center gap-4 mb-10">
+                <h3 class="text-2xl font-serif text-white tracking-widest">15飜以上</h3>
+                <div class="flex-grow h-[1px] bg-gradient-to-r from-white/20 to-transparent"></div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="image-card group cursor-pointer rounded-lg overflow-hidden border-yellow-500/30">
+                    <div class="aspect-video bg-zinc-800 relative flex items-center justify-center">
+                        <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像]</span>
+                        <div class="absolute top-2 right-2 px-2 py-0.5 bg-yellow-600 text-white text-[9px] font-bold rounded">18飜</div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[11px] font-bold text-yellow-500/80 font-serif uppercase">王座の間 三人南</span>
+                            <span class="text-[10px] text-gray-500 font-mono">2024.02.11</span>
+                        </div>
+                        <p class="text-xs text-gray-400 italic">抜きドラと裏ドラの暴力</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/5 py-16 mt-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-xl font-serif gold-gradient mb-6 tracking-widest">役満コレクション</h2>
+            <p class="text-[10px] text-gray-700 tracking-tighter uppercase">© 2026 YAKUMAN ARCHIVE.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
