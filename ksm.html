@@ -37,7 +37,6 @@
             background-image: radial-gradient(circle at 2px 2px, rgba(212, 175, 55, 0.03) 1px, transparent 0);
             background-size: 30px 30px;
         }
-        /* フェードインアニメーション */
         .fade-in {
             animation: fadeIn 0.4s ease forwards;
         }
@@ -49,7 +48,6 @@
 </head>
 <body class="bg-pattern">
 
-    <!-- Navigation -->
     <header class="border-b border-white/10 sticky top-0 bg-black/90 backdrop-blur-md z-50">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
         <a href="index.html" class="text-xl font-serif font-bold gold-gradient tracking-widest hover:opacity-80 transition-opacity">役満コレクション</a>
@@ -67,7 +65,6 @@
 
     <main class="container mx-auto px-4 py-12">
         
-        <!-- Role Header -->
         <section class="mb-16">
             <div class="flex flex-col md:flex-row items-center md:items-end gap-6 mb-8">
                 <h2 class="text-5xl md:text-7xl font-serif text-white tracking-tighter">国士無双</h2>
@@ -80,14 +77,12 @@
             </p>
         </section>
 
-        <!-- Filters (JSで制御) -->
         <div class="flex space-x-8 border-b border-white/10 mb-10 text-sm font-medium">
             <button onclick="filterMode('all', this)" class="filter-btn pb-4 tab-active text-gray-500 hover:text-white transition-all">すべての和了</button>
             <button onclick="filterMode('4p', this)" class="filter-btn pb-4 text-gray-500 hover:text-white transition-all">四人麻雀</button>
             <button onclick="filterMode('3p', this)" class="filter-btn pb-4 text-gray-500 hover:text-white transition-all">三人麻雀</button>
         </div>
 
-        <!-- Gallery Grid -->
         <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             
 
@@ -146,27 +141,36 @@
 
 
         </div>
+        <section class="mt-24 pt-12 border-t border-white/10">
+            <h3 class="text-sm font-serif text-gray-500 mb-8 tracking-widest uppercase text-center font-bold">この役の上位役</h3>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="kjm.html" class="flex-1 max-w-xs image-card p-8 rounded-lg group text-center border-white/10">
+                    <div class="text-[9px] text-gray-600 mb-2 font-bold uppercase tracking-widest">Double Yakuman</div>
+                    <div class="text-xl font-serif text-white group-hover:text-yellow-500 transition-colors">国士無双十三面待ち</div>
+                    <div class="mt-4 flex justify-center opacity-30 group-hover:opacity-100 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </section>
     </main>
 
     <script>
         function filterMode(mode, btnElement) {
-            // 1. ボタンのアクティブ状態の切り替え
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('tab-active');
             });
             btnElement.classList.add('tab-active');
 
-            // 2. カードのフィルタリング
             const cards = document.querySelectorAll('.image-card');
             cards.forEach(card => {
-                // 一旦隠す
                 card.style.display = 'none';
                 card.classList.remove('fade-in');
 
-                // モード判定
                 if (mode === 'all' || card.getAttribute('data-mode') === mode) {
                     card.style.display = 'block';
-                    // 再表示時にアニメーションを適用するために微遅延
                     setTimeout(() => {
                         card.classList.add('fade-in');
                     }, 10);
