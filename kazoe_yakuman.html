@@ -40,25 +40,35 @@
         .fan-nav::-webkit-scrollbar {
             display: none;
         }
+        .tab-active {
+            border-bottom: 2px solid #d4af37;
+            color: #d4af37 !important;
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-pattern">
 
     <!-- Navigation -->
     <header class="border-b border-white/10 sticky top-0 bg-black/90 backdrop-blur-md z-50">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="index.html" class="text-xl font-serif font-bold gold-gradient tracking-widest hover:opacity-80 transition-opacity">役満コレクション</a>
-        
-        <nav class="flex space-x-6 items-center text-sm">
-            <a href="./index.html" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                <span>図鑑に戻る</span>
-            </a>
-        </nav>
-    </div>
-</header>
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-serif font-bold gold-gradient tracking-widest hover:opacity-80 transition-opacity">役満コレクション</a>
+            <nav class="flex space-x-6 items-center text-sm">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    図鑑に戻る
+                </a>
+            </nav>
+        </div>
+    </header>
 
     <main class="container mx-auto px-4 py-12">
         
@@ -70,12 +80,11 @@
                     <span class="px-3 py-1 bg-zinc-800 border border-zinc-600 text-zinc-400 text-xs font-bold rounded uppercase tracking-widest">13+ Fan</span>
                 </div>
             </div>
-            <div class="max-w-3xl">
-                <p class="text-gray-400 leading-relaxed text-sm md:text-base">
-                    役の組み合わせやドラの加算により、合計13飜以上に達した和了。
-                    特定の役満の形を作らずとも、圧倒的な打点によって役満として扱われる。
-                    雀魂では、和了演出の最後に「数え役満」の文字が刻まれ、その積み上げられた飜数は圧巻。
-                </p>
+            <!-- Mode Filters (JS制御) -->
+            <div class="flex space-x-8 border-b border-white/10 mb-10 text-sm font-medium">
+                <button onclick="filterMode('all', this)" class="filter-btn pb-4 tab-active text-gray-500 hover:text-white transition-all">すべての和了</button>
+                <button onclick="filterMode('4p', this)" class="filter-btn pb-4 text-gray-500 hover:text-white transition-all">四人麻雀</button>
+                <button onclick="filterMode('3p', this)" class="filter-btn pb-4 text-gray-500 hover:text-white transition-all">三人麻雀</button>
             </div>
         </section>
 
@@ -89,16 +98,15 @@
         </div>
 
         <!-- 13 Fan Section -->
-        <section id="fan13" class="pt-16 mb-20">
+        <section id="fan13" class="pt-16 mb-20 section-container">
             <div class="flex items-center gap-4 mb-10">
                 <h3 class="text-2xl font-serif text-white tracking-widest">13飜</h3>
                 <div class="flex-grow h-[1px] bg-gradient-to-r from-white/20 to-transparent"></div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="image-card group cursor-pointer rounded-lg overflow-hidden">
+                <div class="image-card group cursor-pointer rounded-lg overflow-hidden fade-in" data-mode="4p">
                     <div class="aspect-video bg-zinc-800 relative flex items-center justify-center">
-                        <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像]</span>
+                        <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像：4人]</span>
                     </div>
                     <div class="p-5">
                         <div class="flex justify-between items-center mb-4">
@@ -108,32 +116,32 @@
                         <p class="text-xs text-gray-400 italic">三倍満からのドラ爆</p>
                     </div>
                 </div>
-                <!-- Card 2 -->
-                <div class="image-card group cursor-pointer rounded-lg overflow-hidden">
+                <div class="image-card group cursor-pointer rounded-lg overflow-hidden fade-in" data-mode="3p">
                     <div class="aspect-video bg-zinc-800 relative flex items-center justify-center">
-                        <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像]</span>
+                        <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像：3人]</span>
                     </div>
                     <div class="p-5">
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-[11px] font-bold text-yellow-500/80">玉の間 四人南</span>
+                            <span class="text-[11px] font-bold text-yellow-500/80">玉の間 三人南</span>
                             <span class="text-[10px] text-gray-500 font-mono">2023.11.15</span>
                         </div>
                         <p class="text-xs text-gray-400 italic">清一色・対々和・三暗刻</p>
                     </div>
                 </div>
             </div>
+            <div class="no-data hidden text-center py-10 text-gray-600 text-sm italic">この条件の記録はありません</div>
         </section>
 
         <!-- 14 Fan Section -->
-        <section id="fan14" class="pt-16 mb-20">
+        <section id="fan14" class="pt-16 mb-20 section-container">
             <div class="flex items-center gap-4 mb-10">
                 <h3 class="text-2xl font-serif text-white tracking-widest">14飜</h3>
                 <div class="flex-grow h-[1px] bg-gradient-to-r from-white/20 to-transparent"></div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="image-card group cursor-pointer rounded-lg overflow-hidden border-yellow-500/10">
+                <div class="image-card group cursor-pointer rounded-lg overflow-hidden fade-in" data-mode="3p">
                     <div class="aspect-video bg-zinc-800 relative flex items-center justify-center">
-                        <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像]</span>
+                        <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像：3人]</span>
                     </div>
                     <div class="p-5">
                         <div class="flex justify-between items-center mb-4">
@@ -144,18 +152,19 @@
                     </div>
                 </div>
             </div>
+            <div class="no-data hidden text-center py-10 text-gray-600 text-sm italic">この条件の記録はありません</div>
         </section>
 
         <!-- 15+ Fan Section -->
-        <section id="fan15" class="pt-16 mb-20">
+        <section id="fan15" class="pt-16 mb-20 section-container">
             <div class="flex items-center gap-4 mb-10">
                 <h3 class="text-2xl font-serif text-white tracking-widest">15飜以上</h3>
                 <div class="flex-grow h-[1px] bg-gradient-to-r from-white/20 to-transparent"></div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="image-card group cursor-pointer rounded-lg overflow-hidden border-yellow-500/30">
+                <div class="image-card group cursor-pointer rounded-lg overflow-hidden fade-in" data-mode="3p">
                     <div class="aspect-video bg-zinc-800 relative flex items-center justify-center">
-                        <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像]</span>
+                        <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像：3人]</span>
                         <div class="absolute top-2 right-2 px-2 py-0.5 bg-yellow-600 text-white text-[9px] font-bold rounded">18飜</div>
                     </div>
                     <div class="p-5">
@@ -167,15 +176,52 @@
                     </div>
                 </div>
             </div>
+            <div class="no-data hidden text-center py-10 text-gray-600 text-sm italic">この条件の記録はありません</div>
         </section>
 
     </main>
 
-    <!-- Footer -->
+    <script>
+        function filterMode(mode, btnElement) {
+            // 1. ボタンのアクティブ状態切り替え
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('tab-active'));
+            btnElement.classList.add('tab-active');
+
+            // 2. セクションごとにカードをフィルタリング
+            const sections = document.querySelectorAll('.section-container');
+            
+            sections.forEach(section => {
+                const cards = section.querySelectorAll('.image-card');
+                const noData = section.querySelector('.no-data');
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    card.style.display = 'none';
+                    card.classList.remove('fade-in');
+
+                    if (mode === 'all' || card.getAttribute('data-mode') === mode) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                        setTimeout(() => {
+                            card.classList.add('fade-in');
+                        }, 10);
+                    }
+                });
+
+                // 表示するものが一つもない場合、メッセージを出す（任意）
+                if (visibleCount === 0) {
+                    noData.classList.remove('hidden');
+                } else {
+                    noData.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+
     <footer class="bg-black border-t border-white/5 py-16 mt-20">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-xl font-serif gold-gradient mb-6 tracking-widest">役満コレクション</h2>
-            <p class="text-[10px] text-gray-700 tracking-tighter uppercase">© 2026 YAKUMAN ARCHIVE.</p>
+            <p class="text-[10px] text-gray-700 tracking-tighter uppercase">© 2024 YAKUMAN ARCHIVE.</p>
         </div>
     </footer>
 
