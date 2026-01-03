@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小四喜 × 字一色 - 役満コレクション</title>
+    <title>字一色×小四喜 - 役満コレクション</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -68,13 +68,12 @@
 
     <main class="container mx-auto px-4 py-12">
         
-        <!-- Role Header -->
         <section class="mb-16">
             <div class="flex flex-col md:flex-row items-center md:items-end gap-6 mb-8">
                 <div class="flex flex-col">
                     <span class="text-red-800 text-xs font-bold tracking-[0.3em] uppercase mb-2">Double Yakuman</span>
                     <h2 class="text-4xl md:text-6xl font-serif text-white tracking-tighter">
-                        小四喜 <span class="text-2xl text-zinc-600 mx-2">×</span> 字一色
+                        字一色 <span class="text-2xl text-zinc-600 mx-2">×</span> 小四喜
                     </h2>
                 </div>
             </div>
@@ -85,31 +84,14 @@
             </div>
         </section>
 
-        <!-- Filters (JS制御) -->
         <div class="flex space-x-8 border-b border-white/10 mb-10 text-sm font-medium">
             <button onclick="filterMode('all', this)" class="filter-btn pb-4 tab-active text-gray-500 hover:text-white transition-all">すべての和了</button>
             <button onclick="filterMode('4p', this)" class="filter-btn pb-4 text-gray-500 hover:text-white transition-all">四人麻雀</button>
             <button onclick="filterMode('3p', this)" class="filter-btn pb-4 text-gray-500 hover:text-white transition-all">三人麻雀</button>
         </div>
 
-        <!-- Gallery Grid -->
         <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
             
-            <!-- Item 1 (4P) -->
-            <div class="image-card group cursor-pointer rounded-lg overflow-hidden fade-in" data-mode="4p">
-                <div class="aspect-video bg-zinc-800 relative flex items-center justify-center border-b border-white/5">
-                    <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像：4人]</span>
-                </div>
-                <div class="p-5">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-[11px] font-bold text-red-500/80 tracking-widest uppercase">玉の間 四人南</span>
-                        <span class="text-[10px] text-gray-500 font-mono">2024.03.01</span>
-                    </div>
-                    <span class="text-xs text-gray-400 italic tracking-wider">段位戦：南4局</span>
-                </div>
-            </div>
-
-            <!-- Item 2 (3P) -->
             <div class="image-card group cursor-pointer rounded-lg overflow-hidden fade-in" data-mode="3p">
                 <div class="aspect-video bg-zinc-800 relative flex items-center justify-center border-b border-white/5">
                     <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像：3人]</span>
@@ -128,21 +110,9 @@
             </div>
         </div>
 
-        <!-- Components Link Section -->
         <section class="mt-24 pt-12 border-t border-white/10">
             <h3 class="text-sm font-serif text-gray-500 mb-8 tracking-widest uppercase text-center font-bold">この役の構成要素</h3>
             <div class="flex flex-wrap justify-center gap-6">
-                <!-- Link to Shousuushi -->
-                <a href="sss.html" class="flex-1 max-w-xs image-card p-8 rounded-lg group text-center border-white/10">
-                    <div class="text-[9px] text-gray-600 mb-2 font-bold uppercase tracking-widest">Single Yakuman</div>
-                    <div class="text-xl font-serif text-white group-hover:text-yellow-500 transition-colors">小四喜</div>
-                    <div class="mt-4 flex justify-center opacity-30 group-hover:opacity-100 transition-opacity">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </div>
-                </a>
-                <!-- Link to Tsuiisou -->
                 <a href="tis.html" class="flex-1 max-w-xs image-card p-8 rounded-lg group text-center border-white/10">
                     <div class="text-[9px] text-gray-600 mb-2 font-bold uppercase tracking-widest">Single Yakuman</div>
                     <div class="text-xl font-serif text-white group-hover:text-yellow-500 transition-colors">字一色</div>
@@ -152,6 +122,15 @@
                         </svg>
                     </div>
                 </a>
+                <a href="sss.html" class="flex-1 max-w-xs image-card p-8 rounded-lg group text-center border-white/10">
+                    <div class="text-[9px] text-gray-600 mb-2 font-bold uppercase tracking-widest">Single Yakuman</div>
+                    <div class="text-xl font-serif text-white group-hover:text-yellow-500 transition-colors">小四喜</div>
+                    <div class="mt-4 flex justify-center opacity-30 group-hover:opacity-100 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </div>
+                </a>  
             </div>
         </section>
 
@@ -159,13 +138,11 @@
 
     <script>
         function filterMode(mode, btnElement) {
-            // 1. ボタンのアクティブ状態の切り替え
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('tab-active');
             });
             btnElement.classList.add('tab-active');
 
-            // 2. カードのフィルタリング
             const cards = document.querySelectorAll('.image-card[data-mode]');
             const noData = document.getElementById('no-data');
             let visibleCount = 0;
@@ -183,7 +160,6 @@
                 }
             });
 
-            // 表示するものが一つもない場合の処理
             if (visibleCount === 0) {
                 noData.classList.remove('hidden');
             } else {
