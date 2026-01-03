@@ -31,11 +31,19 @@
         }
         .tab-active {
             border-bottom: 2px solid #d4af37;
-            color: #d4af37;
+            color: #d4af37 !important;
         }
         .bg-pattern {
             background-image: radial-gradient(circle at 2px 2px, rgba(212, 175, 55, 0.03) 1px, transparent 0);
             background-size: 30px 30px;
+        }
+        /* フェードインアニメーション */
+        .fade-in {
+            animation: fadeIn 0.4s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -67,28 +75,24 @@
                     <span class="px-3 py-1 bg-yellow-900/30 border border-yellow-700/50 text-yellow-500 text-xs font-bold rounded uppercase tracking-widest">Yakuman</span>
                 </div>
             </div>
-            <div class="max-w-3xl">
-                <p class="text-gray-400 leading-relaxed text-sm md:text-base">
-                    一九字牌の13種類をすべて揃える、役満の中でも最も有名かつドラマチックな手。
-                    雀魂の演出では、牌が吸い込まれるような独自のSEと共に、圧倒的な威圧感を持って表示される。
-                    多くのプレイヤーが最初に和了る役満としても親しまれている。
-                </p>
-            </div>
+            <p class="text-gray-400 max-w-3xl leading-relaxed text-sm md:text-base">
+                一九字牌の13種類をすべて揃える、役満の中でも最も有名かつドラマチックな手。
+            </p>
         </section>
 
-        <!-- Filters -->
+        <!-- Filters (JSで制御) -->
         <div class="flex space-x-8 border-b border-white/10 mb-10 text-sm font-medium">
-            <button class="pb-4 tab-active">すべての和了</button>
-            <button class="pb-4 text-gray-500 hover:text-gray-300 transition-colors">四人麻雀</button>
-            <button class="pb-4 text-gray-500 hover:text-gray-300 transition-colors">三人麻雀</button>
+            <button onclick="filterMode('all', this)" class="filter-btn pb-4 tab-active text-gray-500 hover:text-white transition-all">すべての和了</button>
+            <button onclick="filterMode('4p', this)" class="filter-btn pb-4 text-gray-500 hover:text-white transition-all">四人麻雀</button>
+            <button onclick="filterMode('3p', this)" class="filter-btn pb-4 text-gray-500 hover:text-white transition-all">三人麻雀</button>
         </div>
 
         <!-- Gallery Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- Gallery Item 1 -->
-            <div class="image-card group cursor-pointer rounded-lg overflow-hidden">
-                <div class="aspect-video bg-zinc-800 relative overflow-hidden flex items-center justify-center">
+            <!-- 4人打ちの例 -->
+            <div class="image-card group cursor-pointer rounded-lg overflow-hidden fade-in" data-mode="4p">
+                <div class="aspect-video bg-zinc-800 relative flex items-center justify-center">
                     <img 
                         src="image/suuankou/IMG_6975.jpeg" 
                         alt="和了画像" 
@@ -97,80 +101,75 @@
                 </div>
                 <div class="p-5">
                     <div class="flex justify-between items-center mb-4">
-                        <span class="text-[11px] font-bold text-yellow-500/80 tracking-widest">金の間 四人東</span>
+                        <span class="text-[11px] font-bold text-yellow-500/80 tracking-widest uppercase">金の間 四人東</span>
                         <span class="text-[10px] text-gray-500 font-mono">2024.01.03</span>
                     </div>
-                    <div class="flex items-center gap-2 text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span class="text-xs italic">段位戦</span>
-                    </div>
+                    <span class="text-xs text-gray-400 italic">段位戦</span>
                 </div>
             </div>
 
-            <!-- Gallery Item 2 -->
-            <div class="image-card group cursor-pointer rounded-lg overflow-hidden">
-                <div class="aspect-video bg-zinc-800 relative overflow-hidden flex items-center justify-center">
-                    <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像]</span>
+            <!-- 3人打ちの例 -->
+            <div class="image-card group cursor-pointer rounded-lg overflow-hidden fade-in" data-mode="3p">
+                <div class="aspect-video bg-zinc-800 relative flex items-center justify-center">
+                    <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像：3人]</span>
                 </div>
                 <div class="p-5">
                     <div class="flex justify-between items-center mb-4">
-                        <span class="text-[11px] font-bold text-yellow-500/80 tracking-widest">玉の間 三人南</span>
+                        <span class="text-[11px] font-bold text-yellow-500/80 tracking-widest uppercase">玉の間 三人南</span>
                         <span class="text-[10px] text-gray-500 font-mono">2023.12.28</span>
                     </div>
-                    <div class="flex items-center gap-2 text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span class="text-xs italic">友人戦</span>
-                    </div>
+                    <span class="text-xs text-gray-400 italic">友人戦</span>
                 </div>
             </div>
 
-            <!-- Gallery Item 3 -->
-            <div class="image-card group cursor-pointer rounded-lg overflow-hidden">
-                <div class="aspect-video bg-zinc-800 relative overflow-hidden flex items-center justify-center">
-                    <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像]</span>
+            <!-- もう一つ4人打ち -->
+            <div class="image-card group cursor-pointer rounded-lg overflow-hidden fade-in" data-mode="4p">
+                <div class="aspect-video bg-zinc-800 relative flex items-center justify-center">
+                    <span class="text-zinc-600 text-[10px] uppercase tracking-[0.2em]">[和了画像：4人]</span>
                 </div>
                 <div class="p-5">
                     <div class="flex justify-between items-center mb-4">
-                        <span class="text-[11px] font-bold text-yellow-500/80 tracking-widest">銀の間 四人南</span>
+                        <span class="text-[11px] font-bold text-yellow-500/80 tracking-widest uppercase">銀の間 四人南</span>
                         <span class="text-[10px] text-gray-500 font-mono">2023.12.10</span>
                     </div>
-                    <div class="flex items-center gap-2 text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span class="text-xs italic">段位戦</span>
-                    </div>
+                    <span class="text-xs text-gray-400 italic">段位戦</span>
                 </div>
             </div>
 
         </div>
-
-        <!-- Related Double Yakuman -->
-        <section class="mt-24 pt-12 border-t border-white/10">
-            <h3 class="text-sm font-serif text-gray-500 mb-6 tracking-widest uppercase text-center">上位の役満</h3>
-            <div class="flex justify-center">
-                <a href="kokushi_13.html" class="image-card px-10 py-8 text-center rounded-lg group max-w-sm w-full">
-                    <div class="text-[10px] text-yellow-600 mb-2 font-bold uppercase tracking-widest">Double Yakuman</div>
-                    <div class="text-2xl font-serif text-white group-hover:text-yellow-500 transition-colors">国士無双十三面待ち</div>
-                    <p class="text-[10px] text-gray-500 mt-4 italic">「全ての待機牌をその手に」</p>
-                </a>
-            </div>
-        </section>
-
     </main>
 
-    <!-- Footer -->
+    <script>
+        function filterMode(mode, btnElement) {
+            // 1. ボタンのアクティブ状態の切り替え
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+            });
+            btnElement.classList.add('tab-active');
+
+            // 2. カードのフィルタリング
+            const cards = document.querySelectorAll('.image-card');
+            cards.forEach(card => {
+                // 一旦隠す
+                card.style.display = 'none';
+                card.classList.remove('fade-in');
+
+                // モード判定
+                if (mode === 'all' || card.getAttribute('data-mode') === mode) {
+                    card.style.display = 'block';
+                    // 再表示時にアニメーションを適用するために微遅延
+                    setTimeout(() => {
+                        card.classList.add('fade-in');
+                    }, 10);
+                }
+            });
+        }
+    </script>
+
     <footer class="bg-black border-t border-white/5 py-16 mt-20">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-xl font-serif gold-gradient mb-6 tracking-widest">役満コレクション</h2>
-            <p class="text-[10px] text-gray-700 tracking-tighter uppercase">© 2024 YAKUMAN ARCHIVE.</p>
+            <p class="text-[10px] text-gray-700 tracking-tighter uppercase">© 2026 YAKUMAN ARCHIVE.</p>
         </div>
     </footer>
 
